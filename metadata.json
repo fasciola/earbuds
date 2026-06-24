@@ -1,0 +1,6 @@
+{
+  "name": "Touchscreen Earbuds Landing Page",
+  "description": "A premium, high-converting Apple-inspired landing page for the G9 Bluetooth Earbuds featuring a smart touchscreen charging case.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
