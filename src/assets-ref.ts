@@ -1,5 +1,6 @@
 // Product images
 // @ts-ignore
+import heroBgVideo from './assets/video/hero-bg.mp4';
 import g9Black from './assets/images/g9_black_earbuds_1782332624428.jpg';
 // @ts-ignore
 import g9White from './assets/images/g9_white_earbuds_1782332642302.jpg';
@@ -37,4 +38,4 @@ export const IMAGES = {
 };
 
 // Video background path
-export const HERO_VIDEO_PATH = '/assets/input_file_0.mp4';
+export const HERO_VIDEO_PATH = heroBgVideo;
