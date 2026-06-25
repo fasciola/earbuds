@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   ArrowLeft,
   ChevronRight,
@@ -133,23 +133,28 @@ export default function Hero() {
           </div>
 
           <div className="relative flex min-h-[260px] items-center justify-center lg:min-h-0">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={active.id}
-                initial={{ opacity: 0, scale: 0.83, rotate: -7, y: 22 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -7, 0] }}
-                exit={{ opacity: 0, scale: 0.85, rotate: 7, y: -16 }}
-                transition={{
-                  opacity: { duration: 0.26 },
-                  scale: { duration: 0.45 },
-                  rotate: { duration: 0.45 },
-                  y: { duration: 4.8, repeat: Infinity, ease: 'easeInOut' },
-                }}
+            <motion.div
+              key={active.id}
+              initial={{ opacity: 0, scale: 0.86, rotate: -5, y: 14 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -7, 0] }}
+              transition={{
+                opacity: { duration: 0.24 },
+                scale: { duration: 0.38 },
+                rotate: { duration: 0.38 },
+                y: { duration: 4.8, repeat: Infinity, ease: 'easeInOut' },
+              }}
+              className="relative z-10 flex items-center justify-center"
+            >
+              <img
                 src={active.image}
                 alt={`${active.name} G9 touchscreen earbuds`}
-                className="relative z-10 max-h-[310px] max-w-[86%] object-contain drop-shadow-[0_28px_28px_rgba(0,0,0,0.4)] sm:max-h-[370px] lg:max-h-[455px]"
+                className="block max-h-[310px] max-w-[86%] object-contain drop-shadow-[0_28px_28px_rgba(0,0,0,0.4)] sm:max-h-[370px] lg:max-h-[455px]"
+                onError={(event) => {
+                  console.error(`Unable to load ${active.name} product render`, active.image);
+                  event.currentTarget.style.opacity = '0';
+                }}
               />
-            </AnimatePresence>
+            </motion.div>
             <div className="pointer-events-none absolute bottom-1 left-1/2 h-16 w-[88%] -translate-x-1/2 rounded-[50%] border border-dashed border-white/35" />
             <div className="pointer-events-none absolute bottom-5 left-1/2 h-10 w-[67%] -translate-x-1/2 rounded-[50%] border border-white/18" />
           </div>
