@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Menu, MessageSquare, X } from 'lucide-react';
 import { BRAND_NAME, CONTACT_CONFIG } from '../config';
 
 export default function Navbar() {
@@ -7,130 +7,122 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 18);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Controls', href: '#controls' },
-    { name: 'Colours', href: '#colours' },
+    { name: 'Experience', href: '#features' },
+    { name: 'Smart display', href: '#controls' },
+    { name: 'Touch controls', href: '#controls-guide' },
+    { name: 'Finishes', href: '#colours' },
     { name: 'Specifications', href: '#specifications' },
-    { name: 'FAQ', href: '#faq' },
   ];
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleScrollTo = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <header
       id="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-neutral-950/80 backdrop-blur-md border-b border-white/5 py-4'
-          : 'bg-transparent py-6'
+      className={`premium-nav fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'premium-nav--scrolled py-3' : 'py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Brand Logo */}
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 sm:px-10 lg:px-14">
         <a
-          href="#"
-          onClick={(e) => handleScrollTo(e, '#root')}
-          className="text-white font-sans font-bold text-xl tracking-tight hover:opacity-90 transition-opacity flex items-center gap-2"
+          href="#hero"
+          onClick={(event) => handleScrollTo(event, '#hero')}
+          className="group flex items-center gap-3 text-[#f7f3e9]"
+          aria-label={`${BRAND_NAME} home`}
         >
-          <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-black font-extrabold text-sm shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d6b46a]/60 bg-[#d6b46a] text-xs font-extrabold tracking-[-0.08em] text-[#0b0a08] transition-transform duration-300 group-hover:scale-105">
             G9
           </span>
-          <span className="text-white tracking-wider uppercase font-medium text-lg">{BRAND_NAME}</span>
+          <span className="leading-none">
+            <span className="block text-sm font-extrabold tracking-[-0.04em]">{BRAND_NAME}</span>
+            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-[#aaa396]">Audio objects</span>
+          </span>
         </a>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-6 xl:flex">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-neutral-400 hover:text-white font-sans text-sm font-medium transition-colors duration-200"
+              onClick={(event) => handleScrollTo(event, link.href)}
+              className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#aaa396] transition-colors hover:text-[#f7f3e9]"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTA Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden items-center gap-3 md:flex">
           <a
             href={CONTACT_CONFIG.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/10 hover:border-emerald-500/30 hover:bg-emerald-500/10 text-neutral-300 hover:text-emerald-400 text-sm font-medium transition-all duration-300"
+            className="hidden items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-[#c5c0b5] transition-all hover:border-[#d6b46a]/40 hover:text-[#f7f3e9] lg:flex"
           >
-            <MessageSquare className="w-4 h-4" />
-            <span>Chat on WhatsApp</span>
+            <MessageSquare className="h-3.5 w-3.5 text-[#d6b46a]" />
+            Enquire
           </a>
           <a
             href={CONTACT_CONFIG.checkoutUrl}
-            onClick={(e) => handleScrollTo(e, '#purchase-section')}
-            className="flex items-center gap-1 px-5 py-2 rounded-full bg-white hover:bg-neutral-200 text-neutral-950 text-sm font-semibold tracking-wide transition-all duration-300 shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.25)]"
+            onClick={(event) => handleScrollTo(event, '#purchase-section')}
+            className="premium-button inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-extrabold transition-all duration-300"
           >
-            <span>Buy Now</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            Shop G9
+            <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/5 rounded-full transition-colors"
-          aria-label="Toggle mobile menu"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className="rounded-full border border-white/10 p-2 text-[#f7f3e9] transition-colors hover:border-[#d6b46a]/50 md:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[68px] bg-neutral-950 z-40 flex flex-col px-8 py-10 border-t border-white/5 animate-in fade-in slide-in-from-top-4 duration-200">
-          <nav className="flex flex-col gap-6 mb-10">
+        <div className="absolute inset-x-3 top-[calc(100%+8px)] rounded-2xl border border-white/10 bg-[#100f0c]/95 p-5 shadow-2xl backdrop-blur-xl md:hidden">
+          <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleScrollTo(e, link.href)}
-                className="text-neutral-300 hover:text-white font-sans text-lg font-medium transition-colors"
+                onClick={(event) => handleScrollTo(event, link.href)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-[#c5c0b5] transition-colors hover:bg-white/[0.05] hover:text-[#f7f3e9]"
               >
                 {link.name}
               </a>
             ))}
           </nav>
-          
-          <div className="flex flex-col gap-4 mt-auto">
+          <div className="mt-5 grid grid-cols-2 gap-3 border-t border-white/10 pt-5">
             <a
               href={CONTACT_CONFIG.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-white/10 text-neutral-300 font-medium hover:text-emerald-400 hover:border-emerald-500/20"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-3 py-3 text-xs font-bold text-[#e0dacd]"
             >
-              <MessageSquare className="w-5 h-5 text-emerald-400" />
-              <span>Chat on WhatsApp</span>
+              <MessageSquare className="h-4 w-4 text-[#d6b46a]" />
+              Enquire
             </a>
             <a
               href={CONTACT_CONFIG.checkoutUrl}
-              onClick={(e) => handleScrollTo(e, '#purchase-section')}
-              className="flex items-center justify-center gap-1 w-full py-3.5 rounded-xl bg-white text-neutral-950 font-bold tracking-wide shadow-lg hover:bg-neutral-100"
+              onClick={(event) => handleScrollTo(event, '#purchase-section')}
+              className="premium-button inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-3 text-xs font-extrabold"
             >
-              <span>Buy Now</span>
-              <ArrowRight className="w-4 h-4" />
+              Shop G9
+              <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
