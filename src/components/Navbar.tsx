@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { ArrowRight, Menu, MessageSquare, X } from 'lucide-react';
 import { BRAND_NAME, CONTACT_CONFIG } from '../config';
 
@@ -20,7 +20,7 @@ export default function Navbar() {
     { name: 'Specifications', href: '#specifications' },
   ];
 
-  const handleScrollTo = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollTo = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
     setMobileMenuOpen(false);
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
