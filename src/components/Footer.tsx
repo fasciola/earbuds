@@ -1,92 +1,45 @@
+import { Globe, MessageSquare, ShieldCheck } from 'lucide-react';
 import { BRAND_NAME, CONTACT_CONFIG } from '../config';
-import { MessageSquare, ShieldCheck, Mail, Globe, Sparkles } from 'lucide-react';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const legalLinks = [
-    { name: "Shipping & Returns", href: "#" },
-    { name: "Warranty Policy", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-    { name: "Contact Us", href: CONTACT_CONFIG.whatsappUrl },
+  const year = new Date().getFullYear();
+  const links = [
+    { name: 'Shipping & returns', href: '#' },
+    { name: 'Warranty policy', href: '#' },
+    { name: 'Privacy policy', href: '#' },
+    { name: 'Contact us', href: CONTACT_CONFIG.whatsappUrl },
   ];
 
   return (
-    <footer className="bg-neutral-950 text-white border-t border-white/5 pt-16 pb-12 relative overflow-hidden">
-      
-      {/* Background Soft Glow */}
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        {/* Upper footer */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/5">
-          
-          {/* Logo & Subtitle Block (5 columns) */}
-          <div className="col-span-1 md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-black font-extrabold text-sm shadow-[0_0_15px_rgba(34,211,238,0.3)]">
-                G9
-              </span>
-              <span className="text-white tracking-wider uppercase font-medium text-lg">{BRAND_NAME}</span>
-            </div>
-            <p className="text-neutral-400 font-sans text-sm max-w-sm">
-              Smart audio for everyday life. High-fidelity acoustics met with intelligent, color-screen interactive control boxes.
-            </p>
-          </div>
-
-          {/* Quick links grid (4 columns) */}
-          <div className="col-span-1 md:col-span-4 space-y-4">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase">SUPPORT & LEGAL</h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-neutral-400">
-              {legalLinks.map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  className="hover:text-cyan-400 transition-colors duration-200"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Connect block (3 columns) */}
-          <div className="col-span-1 md:col-span-3 space-y-4">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-neutral-400 uppercase">CONNECT DIRECTLY</h4>
-            <div className="space-y-3">
-              <a
-                href={CONTACT_CONFIG.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/5 hover:border-emerald-500/20 bg-white/[0.01] hover:bg-emerald-500/5 text-neutral-300 hover:text-emerald-400 transition-all duration-300 w-fit"
-              >
-                <MessageSquare className="w-4 h-4 text-emerald-400" />
-                <span className="text-xs font-medium">WhatsApp Support</span>
-              </a>
-              <div className="flex items-center gap-2 text-neutral-500 text-xs">
-                <Globe className="w-3.5 h-3.5" />
-                <span>Global Shipments Active</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Lower footer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-sans">
-          
+    <footer className="border-t border-[#e5e5e7] bg-white px-5 py-12 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-10 border-b border-[#e5e5e7] pb-10 md:grid-cols-[1.2fr_1fr_0.85fr]">
           <div>
-            &copy; {currentYear} {BRAND_NAME}. All rights reserved.
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0071e3] text-[10px] font-extrabold tracking-[-0.08em] text-white">G9</span>
+              <span><span className="block text-sm font-bold tracking-[-0.04em] text-[#1d1d1f]">{BRAND_NAME}</span><span className="mt-0.5 block text-[8px] font-medium uppercase tracking-[0.18em] text-[#6e6e73]">Smart audio</span></span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#6e6e73]">Smart listening designed around a touchscreen charging case and intuitive everyday control.</p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span>Specifications subject to supplier confirmation. Made for smart listening.</span>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#6e6e73]">Support and legal</p>
+            <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
+              {links.map((link) => <a key={link.name} href={link.href} className="text-sm text-[#515154] transition-colors hover:text-[#0071e3]">{link.name}</a>)}
+            </div>
           </div>
 
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#6e6e73]">Need help?</p>
+            <a href={CONTACT_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="secondary-button mt-4 w-fit px-4 py-2.5 text-xs font-bold"><MessageSquare className="h-4 w-4 text-[#0071e3]" /> WhatsApp support</a>
+            <p className="mt-4 flex items-center gap-2 text-xs text-[#6e6e73]"><Globe className="h-4 w-4 text-[#0071e3]" /> Global shipments active</p>
+          </div>
         </div>
 
+        <div className="flex flex-col justify-between gap-4 pt-7 text-xs text-[#6e6e73] sm:flex-row sm:items-center">
+          <span>© {year} {BRAND_NAME}. All rights reserved.</span>
+          <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-[#0071e3]" /> Specifications subject to supplier confirmation.</span>
+        </div>
       </div>
     </footer>
   );
