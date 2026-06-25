@@ -37,15 +37,15 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={(event) => handleScrollTo(event, '#hero')}
-          className="group flex items-center gap-3 text-[#f7f3e9]"
+          className="group flex items-center gap-3 text-white"
           aria-label={`${BRAND_NAME} home`}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d6b46a]/60 bg-[#d6b46a] text-xs font-extrabold tracking-[-0.08em] text-[#0b0a08] transition-transform duration-300 group-hover:scale-105">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#00a3e0] bg-[#00a3e0] text-xs font-extrabold tracking-[-0.08em] text-black transition-transform duration-300 group-hover:scale-105">
             G9
           </span>
           <span className="leading-none">
             <span className="block text-sm font-extrabold tracking-[-0.04em]">{BRAND_NAME}</span>
-            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-[#aaa396]">Audio objects</span>
+            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-[#a8a8a8]">Audio objects</span>
           </span>
         </a>
 
@@ -55,7 +55,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={(event) => handleScrollTo(event, link.href)}
-              className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#aaa396] transition-colors hover:text-[#f7f3e9]"
+              className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#a8a8a8] transition-colors hover:text-white"
             >
               {link.name}
             </a>
@@ -67,9 +67,9 @@ export default function Navbar() {
             href={CONTACT_CONFIG.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-[#c5c0b5] transition-all hover:border-[#d6b46a]/40 hover:text-[#f7f3e9] lg:flex"
+            className="hidden items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-[#b8b8b8] transition-all hover:border-[#00a3e0] hover:text-white lg:flex"
           >
-            <MessageSquare className="h-3.5 w-3.5 text-[#d6b46a]" />
+            <MessageSquare className="h-3.5 w-3.5 text-[#00a3e0]" />
             Enquire
           </a>
           <a
@@ -84,7 +84,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setMobileMenuOpen((open) => !open)}
-          className="rounded-full border border-white/10 p-2 text-[#f7f3e9] transition-colors hover:border-[#d6b46a]/50 md:hidden"
+          className="rounded-full border border-white/15 p-2 text-white transition-colors hover:border-[#00a3e0] md:hidden"
           aria-label="Toggle navigation"
           aria-expanded={mobileMenuOpen}
         >
@@ -93,14 +93,14 @@ export default function Navbar() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="absolute inset-x-3 top-[calc(100%+8px)] rounded-2xl border border-white/10 bg-[#100f0c]/95 p-5 shadow-2xl backdrop-blur-xl md:hidden">
+        <div className="absolute inset-x-3 top-[calc(100%+8px)] rounded-2xl border border-white/15 bg-black p-5 shadow-2xl md:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(event) => handleScrollTo(event, link.href)}
-                className="rounded-xl px-4 py-3 text-sm font-semibold text-[#c5c0b5] transition-colors hover:bg-white/[0.05] hover:text-[#f7f3e9]"
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-[#b8b8b8] transition-colors hover:bg-[#151515] hover:text-white"
               >
                 {link.name}
               </a>
@@ -111,9 +111,9 @@ export default function Navbar() {
               href={CONTACT_CONFIG.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-3 py-3 text-xs font-bold text-[#e0dacd]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-3 py-3 text-xs font-bold text-white"
             >
-              <MessageSquare className="h-4 w-4 text-[#d6b46a]" />
+              <MessageSquare className="h-4 w-4 text-[#00a3e0]" />
               Enquire
             </a>
             <a
