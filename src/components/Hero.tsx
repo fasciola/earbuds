@@ -34,15 +34,15 @@ export default function Hero() {
           className="max-w-2xl"
         >
           <div className="premium-kicker mb-6 flex items-center gap-3">
-            <span className="h-px w-10 bg-[#d6b46a]" />
+            <span className="h-px w-10 bg-[#00a3e0]" />
             G9 / Smart audio system
           </div>
 
-          <h1 className="max-w-xl text-5xl font-extrabold leading-[0.93] tracking-[-0.075em] text-[#f7f3e9] sm:text-6xl lg:text-8xl">
-            Sound, <span className="text-[#d6b46a]">within</span> reach.
+          <h1 className="max-w-xl text-5xl font-extrabold leading-[0.93] tracking-[-0.075em] text-white sm:text-6xl lg:text-8xl">
+            Sound, <span className="text-[#00a3e0]">within</span> reach.
           </h1>
 
-          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#c5c0b5] sm:text-lg">
+          <p className="mt-7 max-w-lg text-base leading-relaxed text-[#b8b8b8] sm:text-lg">
             A tactile wireless listening system with a full-colour smart display—designed to make music, calls, and everyday control feel beautifully immediate.
           </p>
 
@@ -65,25 +65,25 @@ export default function Hero() {
 
           <div className="mt-12 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-5 sm:gap-7">
             <div className="premium-stat border-l-0 pl-0">
-              <Bluetooth className="mb-2 h-4 w-4 text-[#d6b46a]" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a9a296]">Bluetooth</p>
-              <p className="mt-1 text-xs font-semibold text-[#f7f3e9]">5.3 connection</p>
+              <Bluetooth className="mb-2 h-4 w-4 text-[#00a3e0]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a8a8a8]">Bluetooth</p>
+              <p className="mt-1 text-xs font-semibold text-white">5.3 connection</p>
             </div>
             <div className="premium-stat pl-4 sm:pl-7">
-              <Smartphone className="mb-2 h-4 w-4 text-[#d6b46a]" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a9a296]">Display</p>
-              <p className="mt-1 text-xs font-semibold text-[#f7f3e9]">Smart touch case</p>
+              <Smartphone className="mb-2 h-4 w-4 text-[#00a3e0]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a8a8a8]">Display</p>
+              <p className="mt-1 text-xs font-semibold text-white">Smart touch case</p>
             </div>
             <div className="premium-stat pl-4 sm:pl-7">
-              <Zap className="mb-2 h-4 w-4 text-[#d6b46a]" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a9a296]">Power</p>
-              <p className="mt-1 text-xs font-semibold text-[#f7f3e9]">Fast Type-C charge</p>
+              <Zap className="mb-2 h-4 w-4 text-[#00a3e0]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[#a8a8a8]">Power</p>
+              <p className="mt-1 text-xs font-semibold text-white">Fast Type-C charge</p>
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-5 right-6 z-20 hidden items-center gap-3 text-[10px] font-medium uppercase tracking-[0.15em] text-[#a9a296] md:flex lg:right-12">
+      <div className="absolute bottom-5 right-6 z-20 hidden items-center gap-3 text-[10px] font-medium uppercase tracking-[0.15em] text-[#a8a8a8] md:flex lg:right-12">
         <span>Scroll to discover</span>
         <span className="h-px w-12 bg-white/20" />
       </div>
