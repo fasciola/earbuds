@@ -3,19 +3,19 @@
 
 :root {
   color-scheme: dark;
-  background: #090907;
+  background: #000000;
   font-synthesis: none;
 }
 
 html {
-  background: #090907;
+  background: #000000;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #090907;
+  background: #000000;
 }
 
 button,
@@ -24,19 +24,18 @@ a {
 }
 
 .aurum-site {
-  --ink: #090907;
-  --ink-soft: #12110e;
-  --surface: rgba(25, 23, 18, 0.72);
-  --line: rgba(232, 220, 193, 0.13);
-  --cream: #f7f3e9;
-  --muted: #b7b0a2;
-  --gold: #d6b46a;
-  --gold-light: #f2d590;
-  --gold-dark: #8b6729;
-  background:
-    radial-gradient(circle at 82% 5%, rgba(214, 180, 106, 0.1), transparent 22rem),
-    #090907;
-  color: var(--cream);
+  --ink: #000000;
+  --ink-soft: #0d0d0d;
+  --surface: #101010;
+  --surface-raised: #151515;
+  --line: #2a2a2a;
+  --white: #ffffff;
+  --muted: #adadad;
+  --blue: #00a3e0;
+  --blue-hover: #008cc4;
+  --blue-soft: #0a3143;
+  background: #000000;
+  color: var(--white);
   font-family: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -58,46 +57,26 @@ a {
   letter-spacing: -0.055em;
 }
 
-.aurum-site main > section {
+/* Flat monochrome sections inspired by the reference: no colour fades or atmospheric effects. */
+.aurum-site main > section,
+.aurum-site main > section:nth-child(even) {
   position: relative;
   isolation: isolate;
-  background:
-    radial-gradient(circle at 12% 8%, rgba(214, 180, 106, 0.055), transparent 19rem),
-    linear-gradient(135deg, #0d0c0a 0%, #0a0a08 60%, #10100d 100%) !important;
+  background: #000000 !important;
   border-color: var(--line) !important;
-}
-
-.aurum-site main > section:nth-child(even) {
-  background:
-    radial-gradient(circle at 88% 14%, rgba(214, 180, 106, 0.085), transparent 22rem),
-    linear-gradient(135deg, #11100d 0%, #0a0a08 62%, #0d0d0b 100%) !important;
 }
 
 .aurum-site main > section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background-image: linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.011) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
-}
-
-.aurum-site #hero {
-  background: #090907 !important;
-}
-
-.aurum-site #hero::after {
   display: none;
 }
 
+.aurum-site #hero,
 .aurum-site footer {
-  background: #070706 !important;
+  background: #000000 !important;
   border-color: var(--line) !important;
 }
 
-/* Re-map the former neon interface to a restrained champagne-metal palette. */
+/* One brand accent across icons, active controls, links and buttons. */
 .aurum-site .text-cyan-400,
 .aurum-site .text-blue-400,
 .aurum-site .text-blue-500,
@@ -105,13 +84,10 @@ a {
 .aurum-site .text-emerald-400,
 .aurum-site .text-teal-400,
 .aurum-site .text-amber-400,
-.aurum-site .text-amber-500 {
-  color: var(--gold-light) !important;
-}
-
+.aurum-site .text-amber-500,
 .aurum-site .text-rose-400,
 .aurum-site .text-rose-500 {
-  color: #dfb59c !important;
+  color: var(--blue) !important;
 }
 
 .aurum-site .bg-cyan-400,
@@ -119,79 +95,67 @@ a {
 .aurum-site .bg-blue-500,
 .aurum-site .bg-blue-600,
 .aurum-site .bg-indigo-500,
-.aurum-site .bg-indigo-600 {
-  background-color: var(--gold) !important;
-}
-
+.aurum-site .bg-indigo-600,
 .aurum-site .bg-emerald-400,
 .aurum-site .bg-emerald-500,
-.aurum-site .bg-teal-400 {
-  background-color: #d7c493 !important;
+.aurum-site .bg-teal-400,
+.aurum-site .bg-amber-400,
+.aurum-site .bg-amber-500,
+.aurum-site .bg-rose-400,
+.aurum-site .bg-rose-500 {
+  background-color: var(--blue) !important;
 }
 
 .aurum-site .border-cyan-500,
 .aurum-site .border-blue-500,
 .aurum-site .border-indigo-500,
 .aurum-site .border-emerald-500,
-.aurum-site .border-amber-500 {
-  border-color: rgba(214, 180, 106, 0.52) !important;
+.aurum-site .border-amber-500,
+.aurum-site .border-rose-500 {
+  border-color: var(--blue) !important;
 }
 
-.aurum-site .from-cyan-400,
-.aurum-site .from-cyan-500,
-.aurum-site .from-blue-500,
-.aurum-site .from-blue-600,
-.aurum-site .from-indigo-500,
-.aurum-site .from-indigo-600,
-.aurum-site .from-emerald-500,
-.aurum-site .from-teal-500,
-.aurum-site .from-amber-500 {
-  --tw-gradient-from: var(--gold-light) var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgb(242 213 144 / 0) var(--tw-gradient-to-position) !important;
+/* Remove every Tailwind colour fade, including former dashboard and screen effects. */
+.aurum-site [class*="bg-gradient"],
+.aurum-site [class*="bg-radial"] {
+  background-color: var(--surface) !important;
+  background-image: none !important;
 }
 
-.aurum-site .to-cyan-400,
-.aurum-site .to-cyan-500,
-.aurum-site .to-blue-400,
-.aurum-site .to-blue-500,
-.aurum-site .to-blue-600,
-.aurum-site .to-indigo-400,
-.aurum-site .to-indigo-500,
-.aurum-site .to-indigo-600,
-.aurum-site .to-emerald-500,
-.aurum-site .to-teal-500,
-.aurum-site .to-amber-500 {
-  --tw-gradient-to: var(--gold-dark) var(--tw-gradient-to-position) !important;
+.aurum-site [class*="text-transparent"] {
+  color: var(--white) !important;
+  -webkit-text-fill-color: currentColor;
 }
 
 .aurum-site .premium-nav {
   border-bottom: 1px solid transparent;
+  background: #000000;
 }
 
 .aurum-site .premium-nav--scrolled {
-  background: rgba(9, 9, 7, 0.82);
+  background: #000000;
   border-color: var(--line);
-  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 }
 
+/* Solid left panel preserves legibility without using a gradient overlay. */
 .aurum-site .premium-hero::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: 0 auto 0 0;
   z-index: 1;
+  width: 53%;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, #090907 0%, rgba(9, 9, 7, 0.86) 26%, rgba(9, 9, 7, 0.34) 56%, rgba(9, 9, 7, 0.12) 100%),
-    linear-gradient(0deg, #090907 1%, transparent 42%);
+  background: rgba(0, 0, 0, 0.78);
 }
 
 .aurum-site .premium-hero__media {
-  filter: saturate(0.68) contrast(1.06) brightness(0.84);
-  transform: scale(1.025);
+  filter: saturate(0.82) contrast(1.04) brightness(0.78);
+  transform: scale(1.02);
 }
 
 .aurum-site .premium-kicker {
-  color: var(--gold-light);
+  color: var(--blue);
   font-family: 'DM Mono', ui-monospace, monospace;
   font-size: 0.69rem;
   letter-spacing: 0.16em;
@@ -199,25 +163,25 @@ a {
 }
 
 .aurum-site .premium-button {
-  background: var(--cream);
-  color: #0b0a08;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.25);
+  background: var(--blue);
+  color: #000000;
+  box-shadow: none;
 }
 
 .aurum-site .premium-button:hover {
-  background: var(--gold-light);
+  background: var(--blue-hover);
   transform: translateY(-2px);
 }
 
 .aurum-site .premium-button--ghost {
-  background: rgba(247, 243, 233, 0.04);
-  color: var(--cream);
-  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--white);
+  border: 1px solid #4a4a4a;
 }
 
 .aurum-site .premium-button--ghost:hover {
-  background: rgba(247, 243, 233, 0.1);
-  border-color: rgba(214, 180, 106, 0.45);
+  background: #161616;
+  border-color: var(--blue);
 }
 
 .aurum-site .premium-stat {
@@ -225,8 +189,8 @@ a {
 }
 
 .aurum-site ::selection {
-  background: rgba(214, 180, 106, 0.38);
-  color: #fffdf7;
+  background: var(--blue);
+  color: #000000;
 }
 
 .aurum-site ::-webkit-scrollbar {
@@ -234,21 +198,19 @@ a {
 }
 
 .aurum-site ::-webkit-scrollbar-track {
-  background: #090907;
+  background: #000000;
 }
 
 .aurum-site ::-webkit-scrollbar-thumb {
-  background: #494132;
-  border: 2px solid #090907;
+  background: #3a3a3a;
+  border: 2px solid #000000;
   border-radius: 999px;
 }
 
 @media (max-width: 767px) {
   .aurum-site .premium-hero::before {
-    background: linear-gradient(0deg, #090907 5%, rgba(9, 9, 7, 0.88) 39%, rgba(9, 9, 7, 0.24) 100%);
-  }
-
-  .aurum-site main > section::after {
-    background-size: 48px 48px;
+    inset: 0;
+    width: auto;
+    background: rgba(0, 0, 0, 0.54);
   }
 }
