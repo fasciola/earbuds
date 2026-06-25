@@ -1,115 +1,84 @@
 import { motion } from 'motion/react';
-import { Play, ArrowRight, Bluetooth, Smartphone, Zap } from 'lucide-react';
+import { ArrowRight, Bluetooth, Play, Smartphone, Zap } from 'lucide-react';
 import { HERO_VIDEO_PATH, IMAGES } from '../assets-ref';
-import { CONTACT_CONFIG } from '../config';
 
 export default function Hero() {
   const handleScrollTo = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <section id="hero" className="relative w-full min-h-screen bg-black flex items-center overflow-hidden">
-      {/* Background Video with Muted Autoplay Loop */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={IMAGES.closeup}
-          className="w-full h-full object-cover object-center md:object-right lg:object-center opacity-70 transition-opacity duration-700"
-          aria-hidden="true"
+    <section id="hero" className="bg-[#f5f5f7] px-5 pb-12 pt-28 sm:px-8 md:pb-16 md:pt-32 lg:px-12">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="max-w-xl lg:pl-5"
         >
-          <source src={HERO_VIDEO_PATH} type="video/mp4" />
-          {/* Fallback image if video is not supported */}
-          <img
-            src={IMAGES.closeup}
-            alt="G9 Touchscreen Earbuds Case"
-            className="w-full h-full object-cover object-center"
-            referrerPolicy="no-referrer"
-          />
-        </video>
-        {/* Gradients to mask the video and improve text readability */}
-        {/* On mobile, we use a stronger, dark radial/linear overlay near the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/50 md:bg-gradient-to-r md:from-neutral-950 md:via-neutral-950/60 md:to-transparent z-10" />
-        <div className="absolute inset-0 bg-radial-gradient from-transparent to-neutral-950/80 pointer-events-none z-10" />
-      </div>
+          <p className="section-eyebrow mb-5">G9 smart earbuds</p>
+          <h1 className="text-5xl font-extrabold leading-[0.93] tracking-[-0.07em] text-[#1d1d1f] sm:text-6xl lg:text-7xl">
+            Sound, <span className="text-[#0071e3]">within</span> reach.
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-[#6e6e73] sm:text-lg">
+            A wireless listening system with a colour touch display, built to put music, calls, and everyday control in the palm of your hand.
+          </p>
 
-      {/* Main Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full pt-24 pb-16 md:py-32 flex items-end md:items-center min-h-screen">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full">
-          {/* Text Content Block */}
-          {/* Mobile: bottom aligned and centered. Desktop: left aligned, 7 columns */}
-          <div className="col-span-1 md:col-span-8 lg:col-span-7 flex flex-col justify-end md:justify-center text-center md:text-left pt-36 md:pt-0">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-6"
-            >
-              {/* Premium micro badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs font-semibold text-cyan-400 uppercase tracking-widest mx-auto md:mx-0 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                Next-Gen Audio Experience
-              </div>
-
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-extrabold tracking-tight text-white leading-[1.1]">
-                Touch. <br className="hidden sm:inline" />
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">Listen.</span> <br />
-                Control.
-              </h1>
-
-              {/* Subheadline */}
-              <p className="text-base sm:text-lg lg:text-xl text-neutral-300 font-sans font-normal max-w-xl leading-relaxed mx-auto md:mx-0">
-                Wireless earbuds with a smart touch-screen charging case designed for music, calls, and everyday control.
-              </p>
-
-              {/* CTA Actions */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center md:justify-start">
-                <button
-                  onClick={() => handleScrollTo('#purchase-section')}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold tracking-wide transition-all duration-300 shadow-[0_0_30px_rgba(34,211,238,0.35)] hover:shadow-[0_0_40px_rgba(34,211,238,0.5)] transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>Shop Now</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => handleScrollTo('#features')}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-semibold transition-all duration-300 border border-white/15 hover:border-white/25 backdrop-blur-sm flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>Explore Features</span>
-                  <Play className="w-4 h-4 text-cyan-400 fill-cyan-400/25" />
-                </button>
-              </div>
-
-              {/* Divider for mobile */}
-              <div className="h-[1px] w-12 bg-neutral-800 mx-auto md:mx-0 my-6 md:hidden" />
-
-              {/* Key Trust Points */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-center md:justify-start pt-4 text-xs font-semibold text-neutral-400 uppercase tracking-widest">
-                <div className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Bluetooth className="w-4 h-4 text-cyan-400" />
-                  <span>Bluetooth 5.3</span>
-                </div>
-                <span className="hidden sm:inline text-neutral-800">•</span>
-                <div className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Smartphone className="w-4 h-4 text-cyan-400" />
-                  <span>Touch-Screen Case</span>
-                </div>
-                <span className="hidden sm:inline text-neutral-800">•</span>
-                <div className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Zap className="w-4 h-4 text-cyan-400" />
-                  <span>Type-C Charging</span>
-                </div>
-              </div>
-            </motion.div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button onClick={() => handleScrollTo('#features')} className="primary-button px-6 py-3.5 text-sm font-semibold">
+              Explore G9
+              <ArrowRight className="h-4 w-4" />
+            </button>
+            <button onClick={() => handleScrollTo('#purchase-section')} className="secondary-button px-6 py-3.5 text-sm font-semibold">
+              <Play className="h-4 w-4 fill-current" />
+              Shop now
+            </button>
           </div>
-        </div>
+
+          <div className="mt-10 grid grid-cols-3 gap-3 border-t border-[#d2d2d7] pt-5 sm:gap-6">
+            <div>
+              <Bluetooth className="mb-2 h-4 w-4 text-[#0071e3]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.11em] text-[#6e6e73]">Wireless</p>
+              <p className="mt-1 text-xs font-semibold text-[#1d1d1f]">Bluetooth 5.3</p>
+            </div>
+            <div className="border-l border-[#d2d2d7] pl-3 sm:pl-6">
+              <Smartphone className="mb-2 h-4 w-4 text-[#0071e3]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.11em] text-[#6e6e73]">Display</p>
+              <p className="mt-1 text-xs font-semibold text-[#1d1d1f]">Touchscreen case</p>
+            </div>
+            <div className="border-l border-[#d2d2d7] pl-3 sm:pl-6">
+              <Zap className="mb-2 h-4 w-4 text-[#0071e3]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.11em] text-[#6e6e73]">Charge</p>
+              <p className="mt-1 text-xs font-semibold text-[#1d1d1f]">Fast Type-C</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.08 }}
+          className="hero-media relative min-h-[390px] overflow-hidden rounded-[2rem] sm:min-h-[480px] lg:min-h-[590px]"
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={IMAGES.closeup}
+            className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
+            aria-label="G9 touchscreen earbuds product video"
+          >
+            <source src={HERO_VIDEO_PATH} type="video/mp4" />
+          </video>
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-black/55 px-5 py-4 text-white backdrop-blur-sm sm:px-7">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/65">Smart charging case</p>
+              <p className="mt-1 text-sm font-semibold">Touch. Listen. Control.</p>
+            </div>
+            <span className="rounded-full border border-white/25 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em]">G9</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
