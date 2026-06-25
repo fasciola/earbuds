@@ -5,15 +5,17 @@ import { BRAND_NAME, CONTACT_CONFIG } from '../config';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const heroMode = !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 18);
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Overview', href: '#hero' },
+    { name: 'Home', href: '#hero' },
     { name: 'Experience', href: '#features' },
     { name: 'Smart display', href: '#controls' },
     { name: 'Controls', href: '#controls-guide' },
@@ -27,36 +29,39 @@ export default function Navbar() {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const topText = heroMode ? 'text-white' : 'text-[#1d1d1f]';
+  const mutedText = heroMode ? 'text-white/70 hover:text-white' : 'text-[#515154] hover:text-[#0071e3]';
+
   return (
     <header
       id="navbar"
       className={`premium-nav fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'premium-nav--scrolled py-3' : 'py-4'
+        scrolled ? 'premium-nav--scrolled py-3' : 'premium-nav--stage py-4'
       }`}
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <a
           href="#hero"
           onClick={(event) => handleScrollTo(event, '#hero')}
-          className="group flex items-center gap-2.5 text-[#1d1d1f]"
+          className={`group flex items-center gap-2.5 ${topText}`}
           aria-label={`${BRAND_NAME} home`}
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0071e3] text-[10px] font-extrabold tracking-[-0.08em] text-white transition-transform duration-300 group-hover:scale-105">
+          <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[10px] font-extrabold tracking-[-0.08em] transition-transform duration-300 group-hover:scale-105 ${heroMode ? 'bg-white text-black' : 'bg-[#0071e3] text-white'}`}>
             G9
           </span>
           <span className="leading-none">
             <span className="block text-sm font-bold tracking-[-0.04em]">{BRAND_NAME}</span>
-            <span className="mt-1 block text-[8px] font-medium uppercase tracking-[0.18em] text-[#6e6e73]">Smart audio</span>
+            <span className={`mt-1 block text-[8px] font-medium uppercase tracking-[0.18em] ${heroMode ? 'text-white/55' : 'text-[#6e6e73]'}`}>Smart audio</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 xl:flex">
-          {navLinks.map((link) => (
+        <nav className={`hidden items-center rounded-full border px-2 py-1 xl:flex ${heroMode ? 'border-white/15 bg-black/10' : 'border-[#e5e5e7] bg-white'}`}>
+          {navLinks.slice(0, 5).map((link, index) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(event) => handleScrollTo(event, link.href)}
-              className="text-[11px] font-medium text-[#515154] transition-colors hover:text-[#0071e3]"
+              className={`rounded-full px-4 py-2 text-[11px] font-medium transition-colors ${index === 0 && heroMode ? 'bg-white text-black' : mutedText}`}
             >
               {link.name}
             </a>
@@ -68,15 +73,15 @@ export default function Navbar() {
             href={CONTACT_CONFIG.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full border border-[#d2d2d7] bg-white px-4 py-2 text-xs font-semibold text-[#1d1d1f] transition-all hover:border-[#0071e3] hover:text-[#0071e3] lg:flex"
+            className={`hidden items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all lg:flex ${heroMode ? 'border-white/25 bg-black/10 text-white hover:bg-black/25' : 'border-[#d2d2d7] bg-white text-[#1d1d1f] hover:border-[#0071e3] hover:text-[#0071e3]'}`}
           >
-            <MessageSquare className="h-3.5 w-3.5 text-[#0071e3]" />
+            <MessageSquare className={`h-3.5 w-3.5 ${heroMode ? 'text-white' : 'text-[#0071e3]'}`} />
             Enquire
           </a>
           <a
             href={CONTACT_CONFIG.checkoutUrl}
             onClick={(event) => handleScrollTo(event, '#purchase-section')}
-            className="primary-button px-4 py-2 text-xs font-semibold"
+            className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-all ${heroMode ? 'bg-white text-black hover:bg-white/85' : 'primary-button'}`}
           >
             Buy G9
             <ArrowRight className="h-3.5 w-3.5" />
@@ -85,7 +90,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setMobileMenuOpen((open) => !open)}
-          className="rounded-full border border-[#d2d2d7] bg-white p-2 text-[#1d1d1f] transition-colors hover:border-[#0071e3] hover:text-[#0071e3] md:hidden"
+          className={`rounded-full border p-2 transition-colors md:hidden ${heroMode ? 'border-white/25 bg-black/10 text-white hover:bg-black/25' : 'border-[#d2d2d7] bg-white text-[#1d1d1f] hover:border-[#0071e3] hover:text-[#0071e3]'}`}
           aria-label="Toggle navigation"
           aria-expanded={mobileMenuOpen}
         >
@@ -94,7 +99,7 @@ export default function Navbar() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="absolute inset-x-3 top-[calc(100%+8px)] rounded-2xl border border-[#e5e5e7] bg-white p-4 shadow-[0_12px_36px_rgba(0,0,0,0.12)] md:hidden">
+        <div className="absolute inset-x-3 top-[calc(100%+8px)] rounded-2xl border border-[#e5e5e7] bg-white p-4 text-[#1d1d1f] shadow-[0_12px_36px_rgba(0,0,0,0.16)] md:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
