@@ -158,7 +158,33 @@ button {
 }
 
 .g9-product-stage {
+  height: 100dvh !important;
+  max-height: 100dvh;
+  min-height: 0 !important;
   transition: background-color 420ms ease;
+}
+
+/* Keep the whole product stage visible at standard 100% browser zoom on shorter desktop screens. */
+.g9-product-stage > div.relative.mx-auto {
+  transform-origin: center top;
+}
+
+@media (min-width: 1024px) and (max-height: 920px) {
+  .g9-product-stage > div.relative.mx-auto {
+    transform: scale(0.92);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 840px) {
+  .g9-product-stage > div.relative.mx-auto {
+    transform: scale(0.86);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 780px) {
+  .g9-product-stage > div.relative.mx-auto {
+    transform: scale(0.8);
+  }
 }
 
 @media (max-width: 767px) {
