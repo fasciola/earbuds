@@ -12,38 +12,19 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="bg-neutral-950 text-white min-h-screen font-sans scroll-smooth antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Sticky Navigation bar */}
+    <div className="aurum-site min-h-screen scroll-smooth antialiased selection:bg-[#d6b46a]/35 selection:text-[#fffaf0]">
       <Navbar />
-
-      {/* Hero section with looping background video and large typography */}
-      <Hero />
-
-      {/* Intro section outlining the case and earbuds */}
-      <Introduction />
-
-      {/* Interactive touchscreen case simulator */}
-      <Touchscreen />
-
-      {/* Capacitive tap commands on the earbuds stem */}
-      <Controls />
-
-      {/* Battery-inspired endurance section with charger animations */}
-      <Performance />
-
-      {/* Selectable color finishes with dynamic glowing mockups */}
-      <Colours />
-
-      {/* High-fidelity tech specification cards */}
-      <Specifications />
-
-      {/* Video-backed closing call-to-action and direct checkout card */}
-      <Lifestyle />
-
-      {/* Accordion list of answers to common questions */}
-      <FAQ />
-
-      {/* Fully customized footer with support and brand labels */}
+      <main>
+        <Hero />
+        <Introduction />
+        <Touchscreen />
+        <Controls />
+        <Performance />
+        <Colours />
+        <Specifications />
+        <Lifestyle />
+        <FAQ />
+      </main>
       <Footer />
     </div>
   );
