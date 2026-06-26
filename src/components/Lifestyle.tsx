@@ -18,8 +18,9 @@ export default function Lifestyle() {
   const [quantity, setQuantity] = useState(1);
   const [ordered, setOrdered] = useState(false);
   const active = colours.find((colour) => colour.id === selected) ?? colours[0];
-  const price = 49.99;
-  const total = (price * quantity).toFixed(2);
+  const price = 120;
+  const formattedPrice = `AED ${price}`;
+  const formattedTotal = `AED ${(price * quantity).toFixed(2)}`;
 
   const handleOrder = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,7 +62,7 @@ export default function Lifestyle() {
               <h3 className="mt-2 text-2xl font-extrabold tracking-[-0.05em] text-[#1d1d1f]">Make it yours.</h3>
               <p className="mt-2 text-xs text-[#6e6e73]">Select a finish and quantity below.</p>
             </div>
-            <div className="text-right"><p className="text-2xl font-extrabold tracking-[-0.055em] text-[#0071e3]">${price}</p><p className="mt-1 text-[10px] font-bold uppercase tracking-[0.09em] text-[#6e6e73]">Launch price</p></div>
+            <div className="text-right"><p className="text-2xl font-extrabold tracking-[-0.055em] text-[#0071e3]">{formattedPrice}</p><p className="mt-1 text-[10px] font-bold uppercase tracking-[0.09em] text-[#6e6e73]">Launch price</p></div>
           </div>
 
           <form onSubmit={handleOrder} className="mt-6 space-y-6">
@@ -88,7 +89,7 @@ export default function Lifestyle() {
                   <span className="w-9 text-center text-sm font-bold text-[#1d1d1f]">{quantity}</span>
                   <button type="button" onClick={() => setQuantity((count) => count + 1)} className="flex h-8 w-8 items-center justify-center rounded-full text-[#515154] hover:bg-white hover:text-[#0071e3]" aria-label="Increase quantity"><Plus className="h-4 w-4" /></button>
                 </div>
-                <p className="text-sm text-[#6e6e73]">Subtotal <span className="ml-1 font-bold text-[#1d1d1f]">${total}</span></p>
+                <p className="text-sm text-[#6e6e73]">Subtotal <span className="ml-1 font-bold text-[#1d1d1f]">{formattedTotal}</span></p>
               </div>
             </div>
 
